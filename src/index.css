@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+table ,th, td {
+  min-width: 65px;
+}
