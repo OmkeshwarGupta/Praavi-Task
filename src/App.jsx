@@ -5,12 +5,26 @@ import SearchBar from "./components/SearchBar";
 import EmployeeList from "./components/EmployeeList";
 import AttendanceCard from "./components/AttendanceCard";
 import AttendanceDetails from "./components/AttendanceDetails";
+import { useState } from "react";
+import { Menu } from "lucide-react";
 
 const App = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
-    <div className="h-[1380px] flex bg-[#f7f7fe]">
+    <div className="h-full w-screen overflow-auto flex bg-[#f7f7fe]">
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-[#323FDD] text-white"
+      >
+        <Menu size={24} />
+      </button>
+
       {/* sidebar */}
-      <div >
+      <div  className={`fixed lg:relative lg:block
+            ${isMobileMenuOpen ? 'block' : 'hidden'}
+            z-40`} >
         <Sidebar />
       </div>
       {/* main content */}
